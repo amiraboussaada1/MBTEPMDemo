@@ -1,0 +1,146 @@
+
+    {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "build-mobile-server",
+                "type": "shell",
+                "command": "${command:sap.mbt.sdk.path}/bin/csdl-to-war${command:sap.mbt.bat.sh}",
+                "args": [
+                    "metadata.csdl.xml",
+                    ".",
+                    "@server-app.options",
+                    "@server-db.options",
+                    "@build-cloud.options",
+                    "-login",
+                    "XSUAA",
+                    "-xsuaa",
+                    "MbtEpmDemoService-xsuaa"
+                ],
+                "group": {
+                    "kind": "build"
+                },
+                "problemMatcher": [
+                    {
+                        "fileLocation": [
+                            "absolute"
+                        ],
+                        "pattern": {
+                            "file": 1,
+                            "line": 2,
+                            "message": 3,
+                            "regexp": "com\\.sap\\.xscript\\..*Exception: (...+):(\\d+) (.+)"
+                        },
+                        "severity": "error"
+                    },
+                    {
+                        "fileLocation": [
+                            "absolute"
+                        ],
+                        "pattern": {
+                            "file": 1,
+                            "line": 2,
+                            "message": 3,
+                            "regexp": ".+ WARN .+ProxyCompiler.+ (...+):(\\d+) (.+)"
+                        },
+                        "severity": "warning"
+                    }
+                ]
+            },
+            {
+                "label": "deploy-mobile-server",
+                "type": "shell",
+                "command": "${command:sap.mbt.sdk.path}/bin/csdl-to-war${command:sap.mbt.bat.sh}",
+                "args": [
+                    "metadata.csdl.xml",
+                    ".",
+                    "@server-app.options",
+                    "@server-db.options",
+                    "@server-log.options",
+                    "@deploy-cloud.options",
+                    "@build-cloud.options",
+                    "-login",
+                    "XSUAA",
+                    "-xsuaa",
+                    "MbtEpmDemoService-xsuaa"
+                ],
+                "group": {
+                    "kind": "build"
+                },
+                "problemMatcher": [
+                    {
+                        "fileLocation": [
+                            "absolute"
+                        ],
+                        "pattern": {
+                            "file": 1,
+                            "line": 2,
+                            "message": 3,
+                            "regexp": "com\\.sap\\.xscript\\..*Exception: (...+):(\\d+) (.+)"
+                        },
+                        "severity": "error"
+                    },
+                    {
+                        "fileLocation": [
+                            "absolute"
+                        ],
+                        "pattern": {
+                            "file": 1,
+                            "line": 2,
+                            "message": 3,
+                            "regexp": ".+ WARN .+ProxyCompiler.+ (...+):(\\d+) (.+)"
+                        },
+                        "severity": "warning"
+                    }
+                ]
+            },
+            {
+                "label": "preview-mobile-server",
+                "type": "shell",
+                "command": "${command:sap.mbt.sdk.path}/bin/csdl-to-war${command:sap.mbt.bat.sh}",
+                "args": [
+                    "metadata.csdl.xml",
+                    ".",
+                    "@server-app.options",
+                    "@server-db.options",
+                    "@server-log.options",
+                    "@deploy-local.options",
+                    "@build-local.options",
+                    "-login",
+                    "XSUAA",
+                    "-xsuaa",
+                    "MbtEpmDemoService-xsuaa"
+                ],
+                "group": {
+                    "kind": "build"
+                },
+                "problemMatcher": [
+                    {
+                        "fileLocation": [
+                            "absolute"
+                        ],
+                        "pattern": {
+                            "file": 1,
+                            "line": 2,
+                            "message": 3,
+                            "regexp": "com\\.sap\\.xscript\\..*Exception: (...+):(\\d+) (.+)"
+                        },
+                        "severity": "error"
+                    },
+                    {
+                        "fileLocation": [
+                            "absolute"
+                        ],
+                        "pattern": {
+                            "file": 1,
+                            "line": 2,
+                            "message": 3,
+                            "regexp": ".+ WARN .+ProxyCompiler.+ (...+):(\\d+) (.+)"
+                        },
+                        "severity": "warning"
+                    }
+                ]
+            }
+        ]
+    }    
+    
